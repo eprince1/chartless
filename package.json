@@ -7,6 +7,12 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "prepublish": "tsc",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "jest"
