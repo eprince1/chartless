@@ -1,4 +1,4 @@
-import Chartless from ".";
+import * as Chartless from ".";
 import { Point } from "./models/point.model";
 
 test("adds 2 points", () => {
