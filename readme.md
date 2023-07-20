@@ -5,7 +5,7 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 ![Repo Size](https://img.shields.io/github/repo-size/eprince1/chartless)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-![Static Badge](https://img.shields.io/badge/status-under_development-blue)
+![Static Badge](https://img.shields.io/badge/status-under_development-orange)
 
 Chartless is an open-source npm package that empowers developers to effortlessly generate headless SVG charts. It provides a simple and versatile API that enables developers to create customized charts without any rendering dependencies. With Chartless, you can quickly generate SVG charts and integrate them into your projects with ease.
 
