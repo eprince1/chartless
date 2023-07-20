@@ -1,23 +1,20 @@
-import { Point } from "./models/point.model";
-import { JSDOM } from "jsdom";
+import { Point } from './models/point.model';
+import { JSDOM } from 'jsdom';
 
 export function generateDocument(): [Document, SVGSVGElement] {
   const document = new JSDOM().window.document;
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
   return [document, document.body.appendChild(svg)];
 }
 
-export function createSvgElement(
-  document: Document,
-  namespace: string
-): SVGElement {
-  return document.createElementNS("http://www.w3.org/2000/svg", namespace);
+export function createSvgElement(document: Document, namespace: string): SVGElement {
+  return document.createElementNS('http://www.w3.org/2000/svg', namespace);
 }
 
 export function setAttributes(
   element: Element,
-  attributes: { key: string; value: string }[]
+  attributes: { key: string; value: string }[],
 ): void {
   attributes.forEach((attr) => element.setAttribute(attr.key, attr.value));
 }
@@ -40,13 +37,13 @@ export function smooth(_: Point, i: number, points: Point[]): string {
   return `C ${controlStart.x} ${controlStart.y}, ${controlEnd.x} ${controlEnd.y}, ${pEnd.x} ${pEnd.y}`;
 }
 
-export function pathD(points: Point[], command: "line" | "smooth"): string {
+export function pathD(points: Point[], command: 'line' | 'smooth'): string {
   return points.reduce(
     (d, point, i, a) =>
       i === 0
         ? `M ${point.x} ${point.y}`
-        : `${d} ${command === "line" ? line(point) : smooth(point, i, a)}`,
-    ""
+        : `${d} ${command === 'line' ? line(point) : smooth(point, i, a)}`,
+    '',
   );
 }
 
@@ -71,6 +68,6 @@ export function getRandomNumber(min: number, max: number): number {
 
 export function getRandomHexColor(): string {
   const randomNum = Math.floor(Math.random() * 16777216);
-  const hexColor = randomNum.toString(16).padStart(6, "0");
+  const hexColor = randomNum.toString(16).padStart(6, '0');
   return `#${hexColor}`;
 }

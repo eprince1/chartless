@@ -23,7 +23,8 @@
   },
   "scripts": {
     "build": "jest && tsc",
-    "test": "jest"
+    "test": "jest",
+    "format": "npx prettier --write ."
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",
