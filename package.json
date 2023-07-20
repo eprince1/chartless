@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Headless svg charts",
   "author": "eprince1",
+  "repository": {
+    "url": "https://github.com/eprince1/chartless"
+  },
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
