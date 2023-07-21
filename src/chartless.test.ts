@@ -1,5 +1,5 @@
 import Chartless from '.';
-import { Point } from './models/point.model';
+import { DataPoint, Point } from './models/point.model';
 
 test('adds 2 points', () => {
   const chartless = new Chartless();
@@ -23,6 +23,14 @@ test('scale a point', () => {
   const s: number = 5;
   const answer: Point = { x: 5, y: 10 };
   expect(chartless.scale(s, p1)).toStrictEqual(answer);
+});
+
+test('midpoint of 2 points', () => {
+  const chartless = new Chartless();
+  const p1: Point = { x: 2, y: 4 };
+  const p2: Point = { x: 4, y: 8 };
+  const answer: Point = { x: 3, y: 6 };
+  expect(chartless.midpoint(p1, p2)).toStrictEqual(answer);
 });
 
 test('creates a document with an svg element', () => {
@@ -68,6 +76,18 @@ test('generates smooth path', () => {
   expect(path).toBe('M 0 0 C 1.5 1.5, 7 7, 10 10 C 13 13, 18.5 18.5, 20 20');
 });
 
+test('continues a path', () => {
+  const chartless = new Chartless();
+  const points: Point[] = [
+    { x: 0, y: 0 },
+    { x: 10, y: 10 },
+    { x: 20, y: 20 },
+  ];
+  let path = chartless.pathD([points[0], points[1]], 'line');
+  path += chartless.continuePathD([points[1], points[2]], 'line');
+  expect(path).toBe('M 0 0 L 10 10 L 20 20');
+});
+
 test('generates line path', () => {
   const chartless = new Chartless();
   const points: Point[] = [
@@ -77,4 +97,16 @@ test('generates line path', () => {
   ];
   const path = chartless.pathD(points, 'line');
   expect(path).toBe('M 0 0 L 10 10 L 20 20');
+});
+
+test('generates a bar graph', () => {
+  const chartless = new Chartless();
+  const data: DataPoint[] = [
+    { label: 0, value: 0 },
+    { label: 10, value: 10 },
+    { label: 20, value: 20 },
+  ];
+  chartless.createBarGraph({ data });
+  const svg = chartless.svgHTML();
+  expect(typeof svg).toBe('string');
 });
