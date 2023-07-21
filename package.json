@@ -22,7 +22,7 @@
     }
   },
   "scripts": {
-    "build": "jest && tsc",
+    "build": "tsc",
     "test": "jest",
     "format": "npx prettier --write ."
   },
